@@ -1,0 +1,3 @@
+function carrito() {}
+
+function compra() {}
