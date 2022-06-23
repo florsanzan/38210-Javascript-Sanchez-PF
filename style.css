@@ -132,6 +132,7 @@ main {
     display: flex;
     position: relative;
     top: -10%;
+
 }
 
 .sesion img {
@@ -140,7 +141,7 @@ main {
     width: 35%;
     height: auto;
     transform: rotate(20deg);
-
+    cursor: pointer;
 }
 
 .sesion h2 {
@@ -194,6 +195,7 @@ main {
 .foto:hover{
     opacity: 0.5;
     transition: opacity 0.5s ease;
+    cursor: pointer;
 }
 
 
