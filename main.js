@@ -27,35 +27,26 @@ class NuevoUsuario {
     this.suscripcion = false;
   }
 
-  estaRegistrado() {
-    if (this.suscripcion) {
-      descuento += 0.2;
+  registro(respuesta) {
+    if(respuesta == "Si"){
+      this.suscripcion=true;
     }
   }
 }
 
+// USUARIOS REGISTRADOS
+const user01 = new NuevoUsuario("Florencia", "florencia@mail.com", "12345");
+const user02 = new NuevoUsuario("Kevin", "kevin@mail.com", "abcde");
+const user03 = new NuevoUsuario("Nicole", "nicole@mail.com", "00000");
+
+user01.registro("Si");
+user02.registro("No");
+user03.registro("No");
+
 //LIBROS EN COLECCION
-const libro01 = new Libros(
-  "Vermeer:La Obra Completa",
-  "Karl Shütz",
-  01,
-  5000,
-  3
-);
-const libro02 = new Libros(
-  "Eso no estaba en mi libros de matemáticas",
-  "Vicente Meavilla",
-  02,
-  1500,
-  25
-);
-const libro03 = new Libros(
-  "Bajo La Misma Estrella",
-  "John Green",
-  03,
-  2500,
-  10
-);
+const libro01 = new Libros("Vermeer:La Obra Completa","Karl Shütz", 01,5000,3);
+const libro02 = new Libros("Eso no estaba en mi libros de matemáticas","Vicente Meavilla",02,1500,25);
+const libro03 = new Libros("Bajo La Misma Estrella","John Green",03,2500,10);
 
 //SOLO PERMITO UN CUPON
 let cupon = prompt("Ingrese, si tiene, un cupon. Si NO tiene, presione 0");
@@ -73,22 +64,20 @@ while (cupon != 0) {
   }
 }
 
-function registrarse() {
+//ESTO NO
+/* function registrarse() {
   const user = prompt("Ingrese nombre de usuario");
-  const pass = prompt("Ingrese contraseña");
   const mail = prompt("Ingrese email");
-  const subs = prompt(
-    "Desea suscribirse? Escriba 1 si su respuesta es SI, 0 si su respuesta es NO"
-  );
+  const pass = prompt("Ingrese contraseña");
+  const subs = prompt("Desea suscribirse? Escriba 1 si su respuesta es SI, 0 si su respuesta es NO");
 
   if (subs == "1") {
     subs = true;
-  } else {
-    subs = false;
-  }
+    }
 
-  const nuevoUser = new NuevoUsuario(user, pass, mail, subs);
-}
+    const nuevoUser = new NuevoUsuario(user, mail, pass, subs);
+} */
+//ESTO NO
 
 console.log(
   "Haga click en las imagenes de los libros que quiera añadir al carrito"
