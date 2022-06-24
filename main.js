@@ -1,5 +1,5 @@
 //SIMULADOR DE COMPRAS
-let envio = 1000;
+
 class Libros {
   constructor(nombre, autor, ID, precio, stock) {
     this.nombre = nombre;
@@ -20,31 +20,53 @@ class Libros {
   }
 }
 class NuevoUsuario {
-  constructor(nombre, email, contraseña) {
+  constructor(nombre, email, contraseña, descuento) {
     this.nombre = nombre;
     this.email = email;
     this.contraseña = contraseña;
-    this.suscripcion = false;
+    this.descuento = descuento;
   }
 
+  //OFREZCO DESCUENTO SI SE SUSCRIBIO
   registro(respuesta) {
-    if(respuesta == "Si"){
-      this.suscripcion=true;
+    if (respuesta == "Si") {
+      this.descuento += 0.2;
+    }
+  }
+  promo(respuesta) {
+
+    while (respuesta != "No") {
+      //DESCUENTO DEL 50%
+      if (respuesta == "BUENOSPRECIOS") {
+        this.descuento += 0.5;
+        respuesta = "No";
+      }
+      //DESCUENTO DEL 30%
+      else if (respuesta == "CLARIN365") {
+        this.descuento += 0.7;
+        respuesta = "No";
+      }
     }
   }
 }
 
 // USUARIOS REGISTRADOS
-const user01 = new NuevoUsuario("Florencia", "florencia@mail.com", "12345");
-const user02 = new NuevoUsuario("Kevin", "kevin@mail.com", "abcde");
-const user03 = new NuevoUsuario("Nicole", "nicole@mail.com", "00000");
+const user01 = new NuevoUsuario("Florencia", "florencia@mail.com", "12345", 0); //FLORENCIA TIENE DESCUENTO POR SUSCRIBIRSE Y POR CUPON = 70 OFF
+const user02 = new NuevoUsuario("Kevin", "kevin@mail.com", "abcde", 0); // KEVIN TIENE DESCUENTO POR CUPON PERO NO POR SUSCRIBIRSE = 50 OFF
+const user03 = new NuevoUsuario("Nicole", "nicole@mail.com", "00000", 0); // NICOLE NO SE SUSCRIBE NI TIENE CUPON = NO HAY DESCUENTO
 
+//SIMULO PREGUNTAR SI DESEEA SUSCRIBIRSE
 user01.registro("Si");
 user02.registro("No");
 user03.registro("No");
 
+//IGUALMENTE SIMULO PREGUNTAR SI TIENE CUPON
+user01.promo("BUENOSPRECIOS");
+user02.promo("CLARIN365");
+user03.promo("No");
+
 //LIBROS EN COLECCION
-const libro01 = new Libros("Vermeer:La Obra Completa","Karl Shütz", 01,5000,3);
+const libro01 = new Libros("Vermeer:La Obra Completa","Karl Shütz",01,5000,3);
 const libro02 = new Libros("Eso no estaba en mi libros de matemáticas","Vicente Meavilla",02,1500,25);
 const libro03 = new Libros("Bajo La Misma Estrella","John Green",03,2500,10);
 
@@ -95,7 +117,7 @@ function add(idClickeada) {
     carrito = carrito + 2500;
     libro03.hayStock();
   }
-
+  let envio = 1000; 
   const iva = (x) => x * 0.21;
   const conDescuento = (x) => x * descuento;
 
